@@ -7,20 +7,20 @@ from data import Language as L, Urls as U
 
 
 def pytest_addoption(parser):
-    parser.addoption('--language', action='store', default="ru",
+    parser.addoption('--language', action='store', default='ru',
                      help=f"Set default language: {L.langs}")
 
 
 @pytest.fixture
 def browser(request):
     user_language = request.config.getoption("language")
-    browser = None
-    options = Options()
     if user_language not in L.langs:
-        raise pytest.UsageError(f"Invalid language. Choose default language from: {L.langs}")
+        raise pytest.UsageError(f"Invalid language. Choose language from: {L.langs}")
+    options = Options()
     options.add_experimental_option("prefs", {"intl.accept_languages": user_language})
     browser = webdriver.Chrome(options=options)
     yield browser
     browser.get(U.link)
     time.sleep(30)
     browser.quit()
+
