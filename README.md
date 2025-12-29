@@ -34,11 +34,15 @@ pytest --language=es test_items.py
 - `requirements.txt` – список зависимостей
 
 ##### Запуск тестов
-1. Установка зависимостей:
+1. Клонировать репозиторий:
+```
+git clone https://github.com/mrnvnst/stepik_ui_language_autotesting.git
+```
+2. Установить зависимости:
 ```
 pip install -r requirements.txt
 ```
-2. Запуск теста (на примере выбора французского языка):
+3. Запустить тест (на примере выбора французского языка):
 ```
 pytest --language=fr test_items.py
 ```
